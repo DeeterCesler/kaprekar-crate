@@ -4,7 +4,7 @@ version = "0.1.0"
 edition = "2021"
 description = "Include a function to find number of iterations to reach Kaprekar's constant."
 license = "MIT"
-documentation = ""
+documentation = "https://github.com/DeeterCesler/kaprekar-crate"
 homepage = "https://github.com/DeeterCesler/kaprekar-crate"
 repository = "https://github.com/DeeterCesler/kaprekar-crate"
 
