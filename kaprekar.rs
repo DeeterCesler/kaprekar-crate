@@ -1,20 +1,19 @@
 fn parse_and_iterate(loop_counter: i16, number: i16) -> i16 {
-    let converted_int: String = number.to_string();
-    let mut test_vec: Vec<char> = converted_int.chars().collect();
-    test_vec.sort();
-    let mut reverse = test_vec.to_vec();
-    reverse.reverse(); // reverse is now the higher number
+    let int_to_str: String = number.to_string();
+    let mut char_vec: Vec<char> = int_to_str.chars().collect();
+    char_vec.sort(); // ascending vector
+    let mut reversed_vec = char_vec.to_vec();
+    reversed_vec.reverse(); // reverse is now the higher number
 
-    // turn the string vectors back into integers
-    // first collect into strings
-    let smaller_str = test_vec.iter().cloned().collect::<String>();
-    let rev_str = reverse.iter().cloned().collect::<String>();
+    // turn vectors back into strings
+    let smaller_str = char_vec.iter().cloned().collect::<String>();
+    let rev_str = reversed_vec.iter().cloned().collect::<String>();
 
-    // then integers
+    // strings to integers
     let smaller_int: i16 = smaller_str.parse().unwrap();
     let larger_int: i16 = rev_str.parse().unwrap();
 
-    // reverse minus original
+    // find difference between the two
     let result = larger_int - smaller_int;
 
     if result == 6174 {
