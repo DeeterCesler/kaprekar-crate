@@ -47,6 +47,6 @@ pub fn calculate(num: i32) -> i32 {
 }
 
 pub fn main() {
-    let answer = calculate(5834);
+    let answer = calculate(1234);
     println!("{}", answer);
 }

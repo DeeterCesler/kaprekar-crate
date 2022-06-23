@@ -1,6 +1,24 @@
-Kaprekar's Constant Counter
+# Kaprekar's Constant Counter
 
 Kaprekar's constant (6174) is useless but fun mathemtatical phenomenon.
+
+## Quick Start
+
+The function within the crate you want is `kaprekar::calculate(XXXX)` which takes a four-digit number with different integers.
+
+E.g.
+
+```
+use kaprekar;
+
+  ...
+  let answer = kaprekar::calculate(1234);
+  // answer == 3
+  ...
+
+```
+
+## How it Works
 
 1. Take any four-digit number where all four digits aren't the same (e.g. 1832 or 9015, not 4444 of 0000)
 2. Arrange the digits into ascending and descending order (8321 and 1238) and sum
@@ -12,18 +30,18 @@ This function accepts an input of a four-digit, non-repeating number and returns
 
 If you submit an invalid integer (either repeating or greater than 4 digits) it will return an error.
 
-- validate the input (AKA four numbers that aren’t all the same digit)
-- instantiate counter variable
-- start a loop, run this function:
-  - split and organize numbers
-    - integer -> to string
-    - string - split into vector
-    - reorganize vector (forward and backward)
-    - convert both vectors strings to into integer again
-    - return a vector of both numbers
-  - add the two numbers
-    - if they don’t add up to 6174, run the loop again
-    - if they do, break return counter (breaking the loop and exiting the function)
+- Validate the input (AKA a four-digit number with differing integers)
+- Instantiate counter variable
+
+And then invoke a recursive function that performs this calculation:
+
+1. Convert the integer -> string
+2. Split string -> vector of characters
+3. Reorganize vector into two different ones, ascending and descending order, e.g. `4123` -> `["4","3","2","1"]` and `["1","2","3","4"]`
+4. Convert both vectors strings again
+5. And convert strings back to into integers
+6. Return the difference of the two integers
+7. If the answer isn't 6174, increment the counter and run it all again
 
 ### Return Codes
 
