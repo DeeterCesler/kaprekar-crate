@@ -14,4 +14,4 @@ repository = "https://github.com/DeeterCesler/kaprekar-crate"
 
 [[bin]]
 name = "kaprekar"
-path = "src/main.rs"
+path = "src/lib.rs"
