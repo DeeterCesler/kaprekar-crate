@@ -1,27 +1,27 @@
 pub fn calculate_three(num: i32) -> i32 {
-    if num > 999 || num < 100 {
-        return -1;
+    if !(100..=999).contains(&num) {
+        -1
     } else if num == 495 {
-        return 0;
+        0
+    } else {
+        parse_and_iterate(0, num, 3)
     }
-
-    return parse_and_iterate(0, num, 3);
 }
 
 pub fn calculate_four(num: i32) -> i32 {
-    if num > 9999 || num < 1000 {
-        return -1;
+    if !(1000..=9999).contains(&num) {
+        -1
     } else if num == 6174 {
-        return 0;
+        0
+    } else {
+        parse_and_iterate(0, num, 4)
     }
-
-    return parse_and_iterate(0, num, 4);
 }
 
 pub fn parse_and_iterate(loop_counter: i32, number: i32, num_of_digits: i8) -> i32 {
     let int_to_str: String = number.to_string();
     let mut char_vec: Vec<char> = int_to_str.chars().collect();
-    char_vec.sort(); // ascending vector
+    char_vec.sort_unstable(); // ascending vector
     let mut reversed_vec = char_vec.to_vec();
     reversed_vec.reverse(); // reverse is now the higher number
 
@@ -41,33 +41,33 @@ pub fn parse_and_iterate(loop_counter: i32, number: i32, num_of_digits: i8) -> i
     // e.g. original: 1040 => small: 0014 => large: 4100
     if num_of_digits == 3 {
         if result < 10 {
-            result = result * 100
+            result *= 100
         } else if result < 100 {
-            result = result * 10
+            result *= 10
         }
 
         if result == 495 {
-            return loop_counter + 1;
+            loop_counter + 1
         } else if result == 0 {
-            return -1;
+            -1
         } else {
-            return parse_and_iterate(loop_counter + 1, result, 3);
+            parse_and_iterate(loop_counter + 1, result, 3)
         }
     } else {
         if result < 10 {
-            result = result * 1000
+            result *= 1000
         } else if result < 100 {
-            result = result * 100
+            result *= 100
         } else if result < 1000 {
-            result = result * 10
+            result *= 10
         }
 
         if result == 6174 {
-            return loop_counter + 1;
+            loop_counter + 1
         } else if result == 0 {
-            return -1;
+            -1
         } else {
-            return parse_and_iterate(loop_counter + 1, result, 4);
+            parse_and_iterate(loop_counter + 1, result, 4)
         }
     }
 }
@@ -75,6 +75,6 @@ pub fn parse_and_iterate(loop_counter: i32, number: i32, num_of_digits: i8) -> i
 pub fn main() {
     let answer_four = calculate_four(8811);
     let answer_three = calculate_three(812);
-    println!("four-digit: {}", answer_four);
-    println!("three-digit: {}", answer_three);
+    println!("four-digit: {answer_four}");
+    println!("three-digit: {answer_three}");
 }
