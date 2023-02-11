@@ -1,24 +1,24 @@
-pub fn calculate_three(num: i32) -> i32 {
+pub fn calculate_three(num: i32) -> Option<i32> {
     if !(100..=999).contains(&num) {
-        -1
+        None
     } else if num == 495 {
-        0
+        Some(0)
     } else {
         parse_and_iterate(0, num, 3)
     }
 }
 
-pub fn calculate_four(num: i32) -> i32 {
+pub fn calculate_four(num: i32) -> Option<i32> {
     if !(1000..=9999).contains(&num) {
-        -1
+        None
     } else if num == 6174 {
-        0
+        Some(0)
     } else {
         parse_and_iterate(0, num, 4)
     }
 }
 
-pub fn parse_and_iterate(loop_counter: i32, number: i32, num_of_digits: i8) -> i32 {
+pub fn parse_and_iterate(loop_counter: i32, number: i32, num_of_digits: i8) -> Option<i32> {
     let int_to_str: String = number.to_string();
     let mut char_vec: Vec<char> = int_to_str.chars().collect();
     char_vec.sort_unstable(); // ascending vector
@@ -47,9 +47,9 @@ pub fn parse_and_iterate(loop_counter: i32, number: i32, num_of_digits: i8) -> i
         }
 
         if result == 495 {
-            loop_counter + 1
+            Some(loop_counter + 1)
         } else if result == 0 {
-            -1
+            None
         } else {
             parse_and_iterate(loop_counter + 1, result, 3)
         }
@@ -63,9 +63,9 @@ pub fn parse_and_iterate(loop_counter: i32, number: i32, num_of_digits: i8) -> i
         }
 
         if result == 6174 {
-            loop_counter + 1
+            Some(loop_counter + 1)
         } else if result == 0 {
-            -1
+            None
         } else {
             parse_and_iterate(loop_counter + 1, result, 4)
         }
@@ -74,7 +74,7 @@ pub fn parse_and_iterate(loop_counter: i32, number: i32, num_of_digits: i8) -> i
 
 pub fn main() {
     let answer_four = calculate_four(8811);
-    let answer_three = calculate_three(812);
-    println!("four-digit: {answer_four}");
-    println!("three-digit: {answer_three}");
+    let answer_three = calculate_three(888);
+    println!("four-digit: {:#?}", answer_four);
+    println!("three-digit: {:#?}", answer_three);
 }

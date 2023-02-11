@@ -51,7 +51,6 @@ If you submit an invalid integer (either repeating or greater than 4 digits for 
 
 ### Return Codes
 
-- Any positive integer is the number of iterations the formula took.
-- A return value of _-1_ means the input was out of bounds
-- A return value of _0_ means the given input itself was 6174 or 495.
-- Any other positive integer is the number of iterations it took to reach the final result of 6174 or 495.
+- Any `Some(positive_integer)` is the number of iterations the formula took.
+- A return value of `Some(0)` means the given input itself was 6174 or 495 (hence `0` manipulations needed).
+- A return value of `None` means the input was out of bounds or was all repeating digits
