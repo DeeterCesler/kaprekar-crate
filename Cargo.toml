@@ -1,6 +1,6 @@
 [package]
 name = "kaprekar"
-version = "0.1.4"
+version = "0.1.5"
 edition = "2021"
 description = "Include a function to find number of iterations to reach Kaprekar's constant."
 license = "MIT"
